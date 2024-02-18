@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block content%}
+<h3 class="h4">Details about {{profile.name}}'s character</h3>
+
+<div class="row">
+  
+    <div class="container">
+        <img src="{{profile.image}}" alt="{{profile.name}}"class="img-fluid img-thumbnail">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row">Name</th>
+                    <td>{{profile.name}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Gender</th>
+                    <td>{{profile.gender}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Species</th>
+                    <td>{{profile.species}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Origin</th>
+                    <td>
+                        {% if profile.origin.id %}
+                           <a href="/location/{{profile.origin.id}}" target="_blank">{{profile.origin.name}}</a>
+                        {% else %}
+                            unknown
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Location</th>
+                    <td>
+                        {% if profile.location.id %}
+                           <a href="/location/{{profile.location.id}}" target="_blank">{{profile.location.name}}</a>
+                        {% else %}
+                            unknown
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 class="h5">Character appearances: </h3>
+   
+    <div class="col-sm-3 col-6">
+      {% for episode_id in profile.episode_ids %}
+        <a href="/episode/{{episode_id}}" target="_blank">
+          <h3 class="h6"> Episode {{episode_id}} </h3>
+        </a>
+      {% endfor %}  
+    </div>
+</div>
+{% endblock %}

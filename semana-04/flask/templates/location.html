@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content%}
+<h3 class="h4">Information about location {{location.id}}: {{location.name}}</h3>
+<div>
+  <div class="container">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">Location</th>
+                <td>{{location.name}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Type</th>
+                <td>{{location.type}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Dimension</th>
+                <td>{{location.dimension}}</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+
+  <h3 class="h5">Residents of this locations: </h3>
+   
+  <div class="col-sm-3 col-6">
+    {% for resident_id in location.resident_ids %}
+      <a href="/profile/{{resident_id}}" target="_blank">
+        <h3 class="h6"> Character {{resident_id}}  </h3>
+      </a>
+    {% endfor %}  
+  </div>
+</div>
+{% endblock %}

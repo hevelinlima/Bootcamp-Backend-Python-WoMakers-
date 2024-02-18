@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content%}
+<div class="row">
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Episode title</th>
+          <th scope="col">Air date</th>
+          <th scope="col">Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for episode_in_dic in episodes %}
+          <tr>
+            <td><a href="episode/{{episode_in_dic.id}}" target="_blank">{{episode_in_dic.name}}</a></td>
+            <td>{{episode_in_dic.air_date}}</td>
+            <td>{{episode_in_dic.episode}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}

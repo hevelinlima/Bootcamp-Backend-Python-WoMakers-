@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content%}
+<div class="row">
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Location</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Dimensão</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for location_in_dic in locations %}
+          <tr>
+            <td><a href="location/{{location_in_dic.id}}" target="_blank">{{location_in_dic.name}}</a></td>
+            <td>{{location_in_dic.type}}</td>
+            <td>{{location_in_dic.dimension}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
